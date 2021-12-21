@@ -8,15 +8,13 @@
 - *JIRA issue*: <!-- [MIC-XYZ](https://jira.ihme.washington.edu/browse/MIC-XYZ) -->
 - *Research reference*: <!--Link to research documentation for code -->
 
-<!-- Change description – why, what, anything unexplained by the above -->
+<!-- 
+Change description – why, what, anything unexplained by the above.
+Include guidance to reviewers if changes are complex.
+--> 
 
 ### Verification and Testing
 <!--
 Details on how code was verified. Consider: plots, images, (small) csv files.
 -->
 
-<!--
-For engineering review:
-    Discussion topic: how much detail?
-    Discussion topic: what should be included in testing?
--->
