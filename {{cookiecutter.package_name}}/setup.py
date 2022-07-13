@@ -17,11 +17,11 @@ if __name__ == "__main__":
         long_description = f.read()
 
     install_requirements = [
+        'gbd_mapping=={{cookiecutter.gbd_mapping_version}}',
         'vivarium=={{cookiecutter.vivarium_version}}',
         'vivarium_public_health=={{cookiecutter.vivarium_public_health_version}}',
 
         'click',
-        'gbd_mapping>=3.0.0, <4.0.0',
         'jinja2',
         'loguru',
         'numpy',
