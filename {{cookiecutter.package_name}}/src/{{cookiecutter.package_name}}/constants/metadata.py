@@ -1,5 +1,7 @@
 from typing import NamedTuple
 
+import pandas as pd
+
 ####################
 # Project metadata #
 ####################
