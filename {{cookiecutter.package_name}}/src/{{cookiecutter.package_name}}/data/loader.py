@@ -13,11 +13,13 @@ for an example.
    No logging is done here. Logging is done in vivarium inputs itself and forwarded.
 """
 import pandas as pd
-
 from gbd_mapping import causes, covariates, risk_factors
 from vivarium.framework.artifact import EntityKey
 from vivarium_gbd_access import gbd
-from vivarium_inputs import globals as vi_globals, interface, utilities as vi_utils, utility_data
+from vivarium_inputs import globals as vi_globals
+from vivarium_inputs import interface
+from vivarium_inputs import utilities as vi_utils
+from vivarium_inputs import utility_data
 from vivarium_inputs.mapping_extension import alternative_risk_factors
 
 from {{cookiecutter.package_name}}.constants import data_keys

@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 import os
 
-from setuptools import setup, find_packages
-
+from setuptools import find_packages, setup
 
 if __name__ == "__main__":
 
@@ -26,9 +25,9 @@ if __name__ == "__main__":
         'loguru',
         'numpy',
         'pandas',
+        'pyyaml',
         'scipy',
         'tables',
-        'pyyaml',
     ]
 
     # use "pip install -e .[dev]" to install required components + extra components
