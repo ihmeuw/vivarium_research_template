@@ -7,9 +7,8 @@ import pandas as pd
 ####################
 
 PROJECT_NAME = '{{cookiecutter.package_name}}'
-CLUSTER_PROJECT = 'proj_cost_effect'
-# # TODO use proj_csu if a csu project
-# CLUSTER_PROJECT = 'proj_csu'
+# use proj_csu if a csu project
+CLUSTER_PROJECT = 'proj_simscience'
 
 CLUSTER_QUEUE = 'all.q'
 MAKE_ARTIFACT_MEM = '10G'
