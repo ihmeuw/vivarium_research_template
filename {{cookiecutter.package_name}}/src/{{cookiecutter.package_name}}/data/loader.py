@@ -13,6 +13,8 @@ for an example.
    No logging is done here. Logging is done in vivarium inputs itself and forwarded.
 """
 import pandas as pd
+from typing import Union
+
 from gbd_mapping import causes, covariates, risk_factors
 from vivarium.framework.artifact import EntityKey
 from vivarium_gbd_access import gbd
@@ -146,7 +148,7 @@ def _load_em_from_meid(location, meid, measure):
 # TODO - add project-specific data functions here
 
 
-def get_entity(key: str):
+def get_entity(key: Union[str, EntityKey]):
     # Map of entity types to their gbd mappings.
     type_map = {
         'cause': causes,
