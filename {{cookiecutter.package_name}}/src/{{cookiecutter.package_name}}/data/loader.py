@@ -152,7 +152,7 @@ def get_entity(key: str):
         'cause': causes,
         'covariate': covariates,
         'risk_factor': risk_factors,
-        'alternative_risk_factor': alternative_risk_factors
+        'alternative_risk_factor': alternative_risk_factors,
     }
     key = EntityKey(key)
     return type_map[key.type][key.name]
