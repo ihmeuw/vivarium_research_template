@@ -53,8 +53,8 @@ def get_data(lookup_key: str, location: str) -> pd.DataFrame:
         # data_keys.DIARRHEA.PREVALENCE: load_standard_data,
         # data_keys.DIARRHEA.INCIDENCE_RATE: load_standard_data,
         # data_keys.DIARRHEA.REMISSION_RATE: load_standard_data,
-        # data_keys.DIARRHEA.CAUSE_SPECIFIC_MORTALITY_RATE: load_standard_data,
-        # data_keys.DIARRHEA.EXCESS_MORTALITY_RATE: load_standard_data,
+        # data_keys.DIARRHEA.CSMR: load_standard_data,
+        # data_keys.DIARRHEA.EMR: load_standard_data,
         # data_keys.DIARRHEA.DISABILITY_WEIGHT: load_standard_data,
         # data_keys.DIARRHEA.RESTRICTIONS: load_metadata,
     }
