@@ -142,7 +142,7 @@ def _load_em_from_meid(location, meid, measure):
     data = vi_utils.scrub_gbd_conventions(data, location)
     data = vi_utils.split_interval(data, interval_column='age', split_column_prefix='age')
     data = vi_utils.split_interval(data, interval_column='year', split_column_prefix='year')
-    return vi_utils.sort_hierarchical_data(data)
+    return vi_utils.sort_hierarchical_data(data).droplevel('location')
 
 
 # TODO - add project-specific data functions here
