@@ -31,10 +31,14 @@ if __name__ == "__main__":
     ]
 
     # use "pip install -e .[dev]" to install required components + extra components
-    extras_require = [
+    data_requires = [
         'vivarium_cluster_tools=={{cookiecutter.vivarium_cluster_tools_version}}',
         'vivarium_inputs[data]=={{cookiecutter.vivarium_inputs_version}}',
     ]
+
+    test_requirements = ['pytest']
+
+    doc_requirements = []
 
     setup(
         name=about['__title__'],
@@ -54,7 +58,10 @@ if __name__ == "__main__":
 
         install_requires=install_requirements,
         extras_require={
-            'dev': extras_require,
+            "docs": doc_requirements,
+            "test": test_requirements,
+            "data": data_requires,
+            "dev": doc_requirements + test_requirements + data_requires,
         },
 
         zip_safe=False,
