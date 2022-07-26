@@ -38,8 +38,6 @@ if __name__ == "__main__":
 
     test_requirements = ['pytest']
 
-    doc_requirements = []
-
     setup(
         name=about['__title__'],
         version=about['__version__'],
@@ -58,10 +56,9 @@ if __name__ == "__main__":
 
         install_requires=install_requirements,
         extras_require={
-            "docs": doc_requirements,
             "test": test_requirements,
             "data": data_requires,
-            "dev": doc_requirements + test_requirements + data_requires,
+            "dev": test_requirements + data_requires,
         },
 
         zip_safe=False,
