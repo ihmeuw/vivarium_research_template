@@ -77,9 +77,6 @@ jobs:
       - name: Test
         run: |
           pytest ./tests
-      - name: Doctest
-        run: |
-          make doctest -C docs/
       - name: Lint
         run: |
           pip install black==22.1.0 isort
