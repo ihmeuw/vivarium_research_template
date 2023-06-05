@@ -39,11 +39,10 @@ def check_for_existing(output_dir: Path, location: str, append: bool, replace_ke
     existing_artifacts = set([item.stem for item in output_dir.iterdir()
                               if item.is_file() and item.suffix == '.hdf'])
     locations = set([sanitize_location(loc) for loc in metadata.LOCATIONS])
+    location = sanitize_location(location)
     existing = locations.intersection(existing_artifacts)
 
-    if existing:
-        if location != 'all':
-            existing = [sanitize_location(location)]
+    if existing and (location == "all" or location in existing):
         if not append:
             click.confirm(
                 f'Existing artifacts found for {existing}. Do you want to delete and rebuild?',
