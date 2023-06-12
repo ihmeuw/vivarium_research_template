@@ -36,9 +36,9 @@ def check_for_existing(
             if item.is_file() and item.suffix == ".hdf"
         ]
     )
-    locations = set([sanitize_location(loc) for loc in metadata.LOCATIONS])
     location = sanitize_location(location)
     if location == "all":
+        locations = set([sanitize_location(loc) for loc in metadata.LOCATIONS])
         existing = locations.intersection(existing_artifacts)
     else:
         existing = [location] if location in existing_artifacts else None
