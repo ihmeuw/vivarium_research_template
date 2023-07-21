@@ -35,7 +35,7 @@ configuration:
         age_start: 0
         age_end: 100
 
-    metrics:
+    observers:
         default:
             - 'age'
             - 'sex'
