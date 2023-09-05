@@ -71,14 +71,14 @@ jobs:
           pushd vivarium_inputs
           pip install .
           popd
+      - name: Lint
+        run: |
+          pip install black==22.3.0 isort
+          black . --check -v
+          isort . --check -v
       - name: Install dependencies
         run: |
           pip install .[test]
       - name: Test
         run: |
           pytest ./tests
-      - name: Lint
-        run: |
-          pip install black==22.1.0 isort
-          black . --check -v
-          isort . --check -v
