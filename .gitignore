@@ -107,4 +107,4 @@ venv.bak/
 .idea/
 
 # Version file
-src/*/_version.py
+src/vivarium_research_template/_version.py
