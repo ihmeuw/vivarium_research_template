@@ -107,15 +107,12 @@ You'll find six directories inside the main
 Running Simulations
 -------------------
 
-With your conda environment active, the first step to running simulations
-is making the model specification files.
-
 Before running a simulation, you should have a model specification file.
 A model specification is a complete description of a vivarium model in
 a yaml format.  An example model specification is provided with this repository
 in the ``model_specifications`` directory.
 
-With this model specification file, you can then run simulations by, e.g.::
+With this model specification file and your conda environment active, you can then run simulations by, e.g.::
 
    ({{ cookiecutter.package_name }}) :~$ simulate run -v /<REPO_INSTALLATION_DIRECTORY>/{{ cookiecutter.package_name }}/src/{{ cookiecutter.package_name }}/model_specifications/model_spec.yaml
 
