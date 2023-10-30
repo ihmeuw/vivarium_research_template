@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #   - invoked on push, pull_request, or manual trigger
-#   - test under all supported versions of Python
+#   - test under all supported versions of Python (python_versions.json)
 # -----------------------------------------------------------------------------
 name: build
 on: [push, pull_request, workflow_dispatch]
