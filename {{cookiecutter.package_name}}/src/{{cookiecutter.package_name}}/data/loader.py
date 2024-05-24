@@ -27,7 +27,9 @@ from vivarium_inputs.mapping_extension import alternative_risk_factors
 from {{cookiecutter.package_name}}.constants import data_keys
 
 
-def get_data(lookup_key: str, location: str) -> pd.DataFrame:
+def get_data(
+    lookup_key: str, location: str, years: Optional[Union[int, str, List[int]]] = None
+) -> pd.DataFrame:
     """Retrieves data from an appropriate source.
 
     Parameters
@@ -59,29 +61,39 @@ def get_data(lookup_key: str, location: str) -> pd.DataFrame:
         # data_keys.DIARRHEA.DISABILITY_WEIGHT: load_standard_data,
         # data_keys.DIARRHEA.RESTRICTIONS: load_metadata,
     }
-    return mapping[lookup_key](lookup_key, location)
+    return mapping[lookup_key](lookup_key, location, years)
 
 
-def load_population_location(key: str, location: str) -> str:
+def load_population_location(
+    key: str, location: str, years: Optional[Union[int, str, List[int]]] = None
+) -> str:
     if key != data_keys.POPULATION.LOCATION:
         raise ValueError(f"Unrecognized key {key}")
 
     return location
 
 
-def load_population_structure(key: str, location: str) -> pd.DataFrame:
-    return interface.get_population_structure(location)
+def load_population_structure(
+    key: str, location: str, years: Optional[Union[int, str, List[int]]] = None
+) -> pd.DataFrame:
+    return interface.get_population_structure(location, years)
 
 
-def load_age_bins(key: str, location: str) -> pd.DataFrame:
+def load_age_bins(
+    key: str, location: str, years: Optional[Union[int, str, List[int]]] = None
+) -> pd.DataFrame:
     return interface.get_age_bins()
 
 
-def load_demographic_dimensions(key: str, location: str) -> pd.DataFrame:
-    return interface.get_demographic_dimensions(location)
+def load_demographic_dimensions(
+    key: str, location: str, years: Optional[Union[int, str, List[int]]] = None
+) -> pd.DataFrame:
+    return interface.get_demographic_dimensions(location, years)
 
 
-def load_theoretical_minimum_risk_life_expectancy(key: str, location: str) -> pd.DataFrame:
+def load_theoretical_minimum_risk_life_expectancy(
+    key: str, location: str, years: Optional[Union[int, str, List[int]]] = None
+) -> pd.DataFrame:
     return interface.get_theoretical_minimum_risk_life_expectancy()
 
 

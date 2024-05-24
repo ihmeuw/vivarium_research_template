@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Optional, Tuple
 
 import click
 from loguru import logger
@@ -17,6 +17,9 @@ from {{cookiecutter.package_name}}.tools import (build_artifacts,
               type=click.Choice(metadata.LOCATIONS + ['all']),
               help=('Location for which to make an artifact. Note: prefer building archives on the cluster.\n'
                     'If you specify location "all" you must be on a cluster node.'))
+@click.option('--years',
+              default=None,
+              help=('Years for which to make an artifact. Can be a single year or "all". If not specified, make for most recent year.'))
 @click.option('-o', '--output-dir',
               default=str(paths.ARTIFACT_ROOT),
               show_default=True,
@@ -34,11 +37,11 @@ from {{cookiecutter.package_name}}.tools import (build_artifacts,
 @click.option('--pdb', 'with_debugger',
               is_flag=True,
               help='Drop into python debugger if an error occurs.')
-def make_artifacts(location: str, output_dir: str, append: bool, replace_keys: Tuple[str, ...],
+def make_artifacts(location: str, years: Optional[str], output_dir: str, append: bool, replace_keys: Tuple[str, ...],
                    verbose: int, with_debugger: bool) -> None:
     configure_logging_to_terminal(verbose)
     main = handle_exceptions(build_artifacts, logger, with_debugger=with_debugger)
-    main(location, output_dir, append or replace_keys, replace_keys, verbose)
+    main(location, years, output_dir, append or replace_keys, replace_keys, verbose)
 
 
 @click.command()
