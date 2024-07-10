@@ -11,7 +11,7 @@ Installation
 ------------
 
 You will need ``conda`` to install all of this repository's requirements.
-We recommend installing [Miniforge](https://github.com/conda-forge/miniforge).
+We recommend installing `Miniforge <https://github.com/conda-forge/miniforge>`_.
 
 Once you have conda installed, you should open up your normal shell
 (if you're on linux or OSX) or the ``git bash`` shell if you're on windows.
