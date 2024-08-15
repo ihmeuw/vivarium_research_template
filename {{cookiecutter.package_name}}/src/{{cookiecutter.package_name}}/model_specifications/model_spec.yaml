@@ -34,6 +34,7 @@ configuration:
         population_size: 100
         initialization_age_min: 0
         initialization_age_max: 100
+        untracking_age: 100
 
     stratification:
         default:
