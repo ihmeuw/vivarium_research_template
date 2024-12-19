@@ -1,5 +1,6 @@
 import os
 import json
+from datetime import datetime
 import requests
 
 def get_latest_version(package_name):
@@ -30,7 +31,6 @@ def main():
         context = json.load(file)
 
     # Set default for current year if not provided
-    from datetime import datetime
     context["current_year"] = str(datetime.now().year)
 
     # Inject the fetched versions into the context
