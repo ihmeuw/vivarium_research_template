@@ -31,7 +31,7 @@ def main():
 
     # Set default for current year if not provided
     from datetime import datetime
-    context["current_year"] = context.get("current_year", str(datetime.now().year))
+    context["current_year"] = str(datetime.now().year)
 
     # Inject the fetched versions into the context
     for key, version in versions.items():
