@@ -1,7 +1,6 @@
 import os
 import json
 import requests
-print("DEBUG: pre_prompt.py is running...")
 
 def get_latest_version(package_name):
     """Fetch the latest version of a package from PyPI."""
@@ -14,7 +13,7 @@ def get_latest_version(package_name):
         raise ValueError(f"Could not fetch version for {package_name}")
 
 def main():
-    """Update cookiecutter context dynamically."""
+    """Update cookiecutter context dynamically with current package versions."""
     # Fetch versions for the required packages
     packages = {
         "vivarium": "vivarium",
@@ -29,6 +28,10 @@ def main():
     context_file = os.path.join(os.getcwd(), "cookiecutter.json")
     with open(context_file, "r") as file:
         context = json.load(file)
+
+    # Set default for current year if not provided
+    from datetime import datetime
+    context["current_year"] = context.get("current_year", str(datetime.now().year))
 
     # Inject the fetched versions into the context
     for key, version in versions.items():
