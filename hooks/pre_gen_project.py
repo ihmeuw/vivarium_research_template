@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+print("DEBUG: pre_gen_project.py is running...")
 
 def get_latest_version(package_name):
     """Fetch the latest version of a package from PyPI."""
