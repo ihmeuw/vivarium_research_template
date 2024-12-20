@@ -5,10 +5,6 @@ import requests
 
 def get_latest_version(package_name):
     """Fetch the latest version of a package from PyPI."""
-
-    # pypi uses dashes, not underscores
-    package_name = package_name.replace('_', '-')
-
     url = f"https://pypi.org/pypi/{package_name}/json"
     response = requests.get(url)
     if response.status_code == 200:
