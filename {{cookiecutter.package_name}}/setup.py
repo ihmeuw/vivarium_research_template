@@ -60,7 +60,7 @@ if __name__ == "__main__":
         "vivarium_cluster_tools>={{cookiecutter.vivarium_cluster_tools_version}}"
     ]
     test_requirements = [
-        "vivarium_dependencies[testing]",
+        "vivarium_dependencies[pytest]",
     ]
     lint_requirements = [
         "vivarium_dependencies[black]",
