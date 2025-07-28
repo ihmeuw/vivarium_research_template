@@ -56,6 +56,9 @@ if __name__ == "__main__":
     setup_requires = ["setuptools_scm"]
 
     data_requirements = ["vivarium_inputs>={{cookiecutter.vivarium_inputs_version}}"]
+    interactive_requirements = [
+        "vivarium_dependencies[interactive]",
+    ]
     cluster_requirements = [
         "vivarium_cluster_tools>={{cookiecutter.vivarium_cluster_tools_version}}"
     ]
@@ -83,7 +86,11 @@ if __name__ == "__main__":
             "test": test_requirements,
             "cluster": cluster_requirements,
             "data": data_requirements + cluster_requirements,
-            "dev": test_requirements + cluster_requirements + lint_requirements,
+            "interactive": interactive_requirements,
+            "dev": test_requirements
+            + cluster_requirements
+            + lint_requirements
+            + interactive_requirements,
         },
         zip_safe=False,
         use_scm_version={
