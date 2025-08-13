@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e # exit on error
+
 # Reset OPTIND so help can be invoked multiple times per shell session.
 OPTIND=1
 Help()
@@ -26,7 +28,7 @@ while getopts ":hflt:" option; do
    case $option in
       h) # display help
          Help
-         return;;
+         exit 0;;
       t) # Type of conda environment to build
          env_type=$OPTARG;;
       f) # Force creation of a new environment
@@ -35,7 +37,7 @@ while getopts ":hflt:" option; do
          install_git_lfs="yes";;
      \?) # Invalid option
          echo "Error: Invalid option"
-         return;;
+         exit 1;;
    esac
 done
 
@@ -50,7 +52,7 @@ elif [ $env_type == 'artifact' ]; then
   install_file="artifact_requirements.txt"
 else
   echo "Invalid environment type. Valid argument types are 'simulation' and 'artifact'."
-  return 
+  exit 1 
 fi
 
 # Pull repo to get latest changes from remote if remote exists
