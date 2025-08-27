@@ -2,8 +2,25 @@
 
 set -e # exit on error
 
+# Define variables
+username=$(whoami)
+env_type="simulation"
+make_new="no"
+install_git_lfs="no"
+days_until_stale=7 # Number of days until environment is considered stale
+
 # Initialize conda if not already initialized
-for conda_path in "$HOME/miniconda3" "$HOME/anaconda3" "/opt/conda" "/usr/local/miniconda3" "/usr/local/anaconda3"; do
+for conda_path in \
+  "$HOME/miniconda3" \
+  "$HOME/miniconda" \
+  "$HOME/anaconda3" \
+  "/ihme/code/$username/miniconda3" \
+  "/ihme/code/$username/miniconda" \
+  "/ihme/code/$username/anaconda3" \
+  "/usr/local/miniconda3" \
+  "/usr/local/miniconda" \
+  "/usr/local/anaconda3" \
+  "/opt/conda"; do
   if [ -f "$conda_path/etc/profile.d/conda.sh" ]; then
     echo
     echo "Initializing conda from $conda_path"
@@ -31,14 +48,6 @@ Help()
    echo "f     Force creation of a new environment."
    echo "l     Install git lfs."
 }
-
-# Define variables
-username=$(whoami)
-env_type="simulation"
-make_new="no"
-install_git_lfs="no"
-days_until_stale=7 # Number of days until environment is considered stale
-
 
 # Process input options
 while getopts ":hflt:" option; do
