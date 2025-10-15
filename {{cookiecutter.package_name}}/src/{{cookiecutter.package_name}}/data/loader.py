@@ -19,6 +19,7 @@ from vivarium.framework.artifact import EntityKey
 from vivarium_gbd_access import gbd
 from vivarium_inputs import globals as vi_globals
 from vivarium_inputs import interface
+from vivarium_inputs.interface import load_standard_data
 from vivarium_inputs import utilities as vi_utils
 from vivarium_inputs import utility_data
 from vivarium_inputs.mapping_extension import alternative_risk_factors
@@ -94,14 +95,6 @@ def load_theoretical_minimum_risk_life_expectancy(
     key: str, location: str, years: int | str | list[int] | None = None
 ) -> pd.DataFrame:
     return interface.get_theoretical_minimum_risk_life_expectancy()
-
-
-def load_standard_data(
-    key: str, location: str, years: int | str | list[int] | None = None
-) -> pd.DataFrame:
-    key = EntityKey(key)
-    entity = get_entity(key)
-    return interface.get_measure(entity, key.measure, location, years).droplevel("location")
 
 
 def load_metadata(key: str, location: str, years: int | str | list[int] | None = None):
