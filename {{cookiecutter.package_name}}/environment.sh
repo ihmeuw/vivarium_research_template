@@ -6,7 +6,6 @@ set -e # exit on error
 username=$(whoami)
 env_type="simulation"
 make_new="no"
-install_git_lfs="no"
 days_until_stale=7 # Number of days until environment is considered stale
 
 # Initialize conda if not already initialized
@@ -52,8 +51,6 @@ while getopts ":hflt:" option; do
          env_type=$OPTARG;;
       f) # Force creation of a new environment
          make_new="yes";;
-      l) # Install git lfs
-         install_git_lfs="yes";;
      \?) # Invalid option
          echo
          echo "ERROR: Invalid option"
@@ -181,7 +178,7 @@ if [[ $create_env == 'yes' ]]; then
   # Create conda environment
   echo
   echo "Creating new conda environment $env_name"
-  conda create -n $env_name python=3.11 -c anaconda -y
+  conda create -n $env_name python=3.11 git git-lfs hdf5 -c conda_forge -y
   conda activate $env_name
   # NOTE: update branch name if you update requirements.txt in a branch
   echo
@@ -193,11 +190,7 @@ if [[ $create_env == 'yes' ]]; then
   uv pip install -e .[dev] --extra-index-url $artifactory_url --index-strategy unsafe-best-match
   # Install redis for simulation environments
   if [ $env_type == 'simulation' ]; then
-    conda install redis -c anaconda -y
-  fi
-  # Install git lfs if requested
-  if [ $install_git_lfs == 'yes' ]; then
-    git lfs install
+    conda install redis -c conda_forge -y
   fi
 else
   echo
