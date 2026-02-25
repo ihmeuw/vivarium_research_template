@@ -133,7 +133,7 @@ else
   #   jq_exists=$(conda list | grep -w jq)
   #   if [[ $jq_exists == '' ]]; then
   #     # Empty string is no return on grep
-  #     conda install jq -c anaconda -y
+  #     conda install jq -c conda-forge -y
   #   fi
   #   echo "Checking framework packages are up to date..."
   #   # Check if there has been an update to vivarium packages since last modification to requirements file
@@ -178,7 +178,7 @@ if [[ $create_env == 'yes' ]]; then
   # Create conda environment
   echo
   echo "Creating new conda environment $env_name"
-  conda create -n $env_name python=3.11 git git-lfs hdf5 -c conda_forge -y
+  conda create -n $env_name python=3.11 git git-lfs hdf5 -c conda-forge -y
   conda activate $env_name
   # NOTE: update branch name if you update requirements.txt in a branch
   echo
@@ -190,7 +190,7 @@ if [[ $create_env == 'yes' ]]; then
   uv pip install -e .[dev] --extra-index-url $artifactory_url --index-strategy unsafe-best-match
   # Install redis for simulation environments
   if [ $env_type == 'simulation' ]; then
-    conda install redis -c conda_forge -y
+    conda install redis-server -c conda-forge -y
   fi
 else
   echo
