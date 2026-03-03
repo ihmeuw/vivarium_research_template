@@ -59,30 +59,34 @@ As noted above, it is not possible to make artifacts unless you are on the IHME 
 If you are not on the IHME network, you will be limited to running simulations from pre-made
 artifacts; see the next section for how to do this.
 
-In order to make an artifact for a location (e.g. Pakistan), you will run the following::
+In order to make an artifact for a location (e.g. Pakistan), you will first have to add the
+location to the ``LOCATIONS`` constant in the ``src/{{ cookiecutter.package_name }}/constants/metadata.py`` file.
+Then, you can make the artifact by activating the artifact conda environment and running the following::
 
-  ({{ cookiecutter.package_name }}_artifact) :~$ make_artifacts -vvv -l "Pakistan"
+  ({{ cookiecutter.package_name }}_artifact) :~$ make_artifacts -vvv -l "Pakistan" -o src/{{ cookiecutter.package_name }}/artifacts
 
 Running Simulations
 -------------------
 
+If you've made your own artifact, you will need to update the ``input_data`` section of the ``model_spec.yaml`` file to point to the artifact you want to use as input.
+The model specification file is located at ``src/{{ cookiecutter.package_name }}/model_specifications/model_spec.yaml``.
+It is a description of the Vivarium model in a `YAML <https://en.wikipedia.org/wiki/YAML>`__ format.
+You can edit this file to modify the simulation that runs.
+For more about this, see the documentation at
+https://vivarium.readthedocs.io/en/latest/concepts/model_specification/index.html
+
 With the simulation environment active, you can run a single simulation (1 draw, 1 seed, and 1 scenario) by, e.g.::
 
-   ({{ cookiecutter.package_name }}) :~/{{ cookiecutter.package_name }}$ simulate run -v {{ cookiecutter.package_name }}/src/{{ cookiecutter.package_name }}/model_specifications/model_spec.yaml
+   ({{ cookiecutter.package_name }}_simulation) :~/{{ cookiecutter.package_name }}$ simulate run -v src/{{ cookiecutter.package_name }}/model_specifications/model_spec.yaml
 
 The ``-v`` flag will log verbosely, so you will get log messages every time
 step. For more ways to run simulations, see the tutorials at
 https://vivarium.readthedocs.io/en/latest/tutorials/running_a_simulation/index.html
 and https://vivarium.readthedocs.io/en/latest/tutorials/exploration.html
 
-The ``model_spec.yaml`` file is a description of the Vivarium model in a yaml format.
-You can edit this file to modify the simulation that runs.
-For more about this, see the documentation at
-https://vivarium.readthedocs.io/en/latest/concepts/model_specification/index.html
-
 **If you are on the IHME cluster**, you can also run simulations of multiple draws, seeds, and scenarios in parallel across nodes::
 
-  ({{ cookiecutter.package_name }}_simulation) :~/{{ cookiecutter.package_name }}$ psimulate run {{ cookiecutter.package_name }}/src/{{ cookiecutter.package_name }}/model_specifications/model_spec.yaml {{ cookiecutter.package_name }}/src/{{ cookiecutter.package_name }}/model_specifications/branches/scenarios.yaml
+  ({{ cookiecutter.package_name }}_simulation) :~/{{ cookiecutter.package_name }}$ psimulate run src/{{ cookiecutter.package_name }}/model_specifications/model_spec.yaml src/{{ cookiecutter.package_name }}/model_specifications/branches/scenarios.yaml
 
 Running Tests
 -------------
