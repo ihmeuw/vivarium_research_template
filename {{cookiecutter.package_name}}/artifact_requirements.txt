@@ -14,7 +14,7 @@ tables
 vivarium_inputs>=5.0.0
 vivarium_gbd_access>=4.0.0
 vivarium_cluster_tools>=2.0.0
-black==22.3.0
+black==26.3.1
 isort
 jupyterlab
 matplotlib
